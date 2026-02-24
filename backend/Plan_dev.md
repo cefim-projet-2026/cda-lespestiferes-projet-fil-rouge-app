@@ -97,9 +97,9 @@ statut_presence_enum → 'Present', 'Absence_Injustifiee', 'Absence_Justifiee'
 | `DatabaseConfig.java` | ✅ Done | Config Supabase via properties |
 | `application.properties.example` | ✅ Done | Template complet (JWT, CORS, Hikari, logs) |
 | `.gitignore` + `CONTRIBUTING.md` | ✅ Done | Workflow Git documenté |
-| Entités JPA | ✅ Done | Créées dans core/entities |
+| Entités JPA | ✅ Done | Créées dans `core/entities` |
 | Repositories | ✅ Done | Interfaces créées dans `core/repositories` |
-| Services métier | ❌ À faire | |
+| Services métier | ✅ Done | Implémentés dans `core/services` |
 | Contrôleurs REST | ❌ À faire | |
 | JWT auth (login/register) | ❌ À faire | |
 
@@ -114,7 +114,7 @@ statut_presence_enum → 'Present', 'Absence_Injustifiee', 'Absence_Justifiee'
 | **US-01** | ~~Init projet Spring Boot~~ | ~~3~~ | ✅ Done |
 | **US-02** | ~~Créer les entités JPA (8 tables + 5 enums)~~ | ~~8~~ | ✅ Done |
 | **US-03** | ~~Repositories Spring Data JPA~~ | ~~3~~ | ✅ Done |
-| **US-04** | Services métier (Utilisateur, Note, Classe, Matiere) | 8 | ❌ |
+| **US-04** | ~~Services métier (Utilisateur, Note, Classe, Matiere)~~ | ~~8~~ | ✅ Done |
 | **US-05** | Contrôleurs REST API (CRUD) | 8 | ❌ |
 | **US-06** | RP : gestion utilisateurs (CRUD) via API | 5 | ❌ |
 | **US-07** | Formateur : saisir et consulter les notes | 8 | ❌ |
