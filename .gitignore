@@ -1,0 +1,288 @@
+# ==========================================
+# GITIGNORE - PROJET FIL ROUGE
+# ==========================================
+
+# ==========================================
+# BACKEND (Java/Spring Boot)
+# ==========================================
+
+## Maven
+backend/target/
+backend/**/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/pom.xml.tag
+backend/pom.xml.releaseBackup
+backend/pom.xml.versionsBackup
+backend/pom.xml.next
+backend/release.properties
+backend/dependency-reduced-pom.xml
+backend/buildNumber.properties
+backend/.mvn/timing.properties
+backend/.mvn/wrapper/maven-wrapper.properties
+
+## Gradle (si utilisé)
+backend/.gradle/
+backend/build/
+backend/**/build/
+backend/!gradle/wrapper/gradle-wrapper.jar
+backend/!**/src/main/**/build/
+backend/!**/src/test/**/build/
+
+## IntelliJ IDEA
+backend/.idea/
+backend/*.iws
+backend/*.iml
+backend/*.ipr
+backend/out/
+backend/.idea_modules/
+
+## Eclipse
+backend/.apt_generated
+backend/.classpath
+backend/.factorypath
+backend/.project
+backend/.settings
+backend/.springBeans
+backend/.sts4-cache
+backend/bin/
+backend/!**/src/main/**/bin/
+backend/!**/src/test/**/bin/
+
+## VS Code
+backend/.vscode/
+
+## NetBeans
+backend/nbproject/private/
+backend/nbbuild/
+backend/dist/
+backend/nbdist/
+backend/.nb-gradle/
+
+## Spring Boot
+backend/spring-boot-*.log
+backend/*.log
+
+## Logs
+backend/logs/
+backend/*.log.*
+
+## Application properties avec secrets
+backend/src/main/resources/application.properties
+backend/src/main/resources/application-local.properties
+backend/src/main/resources/application-secrets.properties
+backend/src/main/resources/application-*.properties
+!backend/src/main/resources/application.properties.example
+
+# ==========================================
+# FRONTEND (Next.js)
+# ==========================================
+
+## Dependencies
+frontend/node_modules/
+frontend/.pnp
+frontend/.pnp.js
+
+## Testing
+frontend/coverage
+
+## Next.js
+frontend/.next/
+frontend/out/
+
+## Production
+frontend/build
+
+## Misc
+frontend/.DS_Store
+frontend/*.pem
+
+## Debug
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+## Local env files
+frontend/.env
+frontend/.env*.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+## Vercel
+frontend/.vercel
+
+## Typescript
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+
+# ==========================================
+# FICHIERS SYSTÈME
+# ==========================================
+
+## macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+## Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+## Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ==========================================
+# ÉDITEURS & IDEs
+# ==========================================
+
+## JetBrains IDEs
+.idea/
+*.iws
+*.iml
+*.ipr
+.idea_modules/
+cmake-build-*/
+*.swp
+*.swo
+*~.nib
+
+## Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+## Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# ==========================================
+# BASE DE DONNÉES
+# ==========================================
+
+## PostgreSQL
+*.sql.backup
+*.dump
+
+## H2 Database (si utilisée en dev)
+backend/*.db
+backend/*.mv.db
+backend/*.trace.db
+
+# ==========================================
+# SECRETS & CREDENTIALS
+# ==========================================
+
+## Variables d'environnement
+.env
+.env.local
+.env.*.local
+**/*.env
+**/.env
+
+## Certificats et clés
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.jks
+*.keystore
+
+## Fichiers de configuration sensibles
+**/secrets/
+**/credentials/
+application-secrets.yml
+application-secrets.properties
+
+# ==========================================
+# FICHIERS TEMPORAIRES
+# ==========================================
+
+## Fichiers temporaires généraux
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.*.sw?
+
+## Cache
+.cache/
+*.cache
+
+# ==========================================
+# DOCUMENTATION & ASSETS
+# ==========================================
+
+## Documentation générée
+docs/build/
+site/
+
+## Assets compilés
+*.min.js
+*.min.css
+
+# ==========================================
+# TESTS & COVERAGE
+# ==========================================
+
+## Coverage reports
+coverage/
+*.lcov
+.nyc_output/
+
+## Test databases
+test.db
+test-*.db
+
+# ==========================================
+# DOCKER (si utilisé)
+# ==========================================
+
+## Docker
+docker-compose.override.yml
+.docker/
+
+# ==========================================
+# CI/CD
+# ==========================================
+
+## GitHub Actions
+.github/workflows/local-test.yml
+
+## Logs CI
+*.log
+
+# ==========================================
+# FICHIERS SPÉCIFIQUES AU PROJET
+# ==========================================
+
+## Imports de données
+**/imports/*.xlsx
+**/imports/*.csv
+**/imports/*.json
+!**/imports/template.xlsx
+
+## Backups
+backups/
+*.backup
+
+## Fichiers de dev
+TODO.md
+NOTES.md

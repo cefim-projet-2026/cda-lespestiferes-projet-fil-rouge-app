@@ -1,0 +1,90 @@
+# ==========================================
+# EXEMPLE DE CONFIGURATION APPLICATION
+# ==========================================
+# Copiez ce fichier vers application.properties
+# et remplacez les valeurs par vos vraies credentials
+
+# ==========================================
+# Configuration de l'Application
+# ==========================================
+spring.application.name=GestionPedagogique
+
+# ==========================================
+# Configuration du Serveur
+# ==========================================
+server.port=8080
+server.error.include-message=always
+server.error.include-stacktrace=never
+
+# ==========================================
+# Configuration PostgreSQL - Supabase
+# ==========================================
+# Remplacez par vos vraies credentials Supabase
+spring.datasource.url=jdbc:postgresql://VOTRE_HOST_SUPABASE:5432/postgres
+spring.datasource.username=VOTRE_USERNAME
+spring.datasource.password=VOTRE_PASSWORD
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Pool de connexions Supabase (optimisé pour pooler)
+spring.datasource.hikari.maximum-pool-size=5
+spring.datasource.hikari.minimum-idle=2
+spring.datasource.hikari.connection-timeout=30000
+spring.datasource.hikari.idle-timeout=600000
+spring.datasource.hikari.max-lifetime=1800000
+
+# ==========================================
+# Configuration JPA/Hibernate
+# ==========================================
+# Pour le test initial, on désactive la validation du schéma
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+
+# ==========================================
+# Configuration de la Sécurité JWT
+# ==========================================
+# IMPORTANT: Changez cette clé en production !
+# Générez une clé sécurisée avec : openssl rand -base64 64
+jwt.secret=CHANGEZ_CETTE_CLE_SECRETE_EN_PRODUCTION_UTILISEZ_UNE_VRAIE_CLE_LONGUE
+jwt.expiration=86400000
+# 86400000 ms = 24 heures
+
+# ==========================================
+# Configuration CORS (pour le frontend Next.js)
+# ==========================================
+cors.allowed-origins=http://localhost:3000,http://localhost:3001
+cors.allowed-methods=GET,POST,PUT,DELETE,OPTIONS
+cors.allowed-headers=*
+cors.allow-credentials=true
+
+# ==========================================
+# Configuration des Logs
+# ==========================================
+logging.level.root=INFO
+logging.level.fr.cefim.lespestiferes.gestionpedagogique=DEBUG
+logging.level.org.springframework.security=DEBUG
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+
+# Format des logs
+logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} - %msg%n
+
+# ==========================================
+# Configuration Actuator (Monitoring)
+# ==========================================
+management.endpoints.web.exposure.include=health,info,metrics
+management.endpoint.health.show-details=when-authorized
+
+# ==========================================
+# Configuration de la Validation
+# ==========================================
+spring.mvc.throw-exception-if-no-handler-found=true
+spring.web.resources.add-mappings=false
+
+# ==========================================
+# Configuration du format JSON
+# ==========================================
+# Configuration simplifiée pour Spring Boot 4.x
+spring.jackson.time-zone=Europe/Paris
