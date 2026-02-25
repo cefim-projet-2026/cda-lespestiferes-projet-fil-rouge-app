@@ -2,13 +2,13 @@ package fr.cefim.lespestiferes.gestionpedagogique.core.services;
 
 import fr.cefim.lespestiferes.gestionpedagogique.core.entities.Classe;
 import fr.cefim.lespestiferes.gestionpedagogique.core.repositories.ClasseRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,8 +25,9 @@ public class ClasseService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<Classe> getClasseById(Integer id) {
-        return classeRepository.findById(id);
+    public Classe getClasseById(Integer id) {
+        return classeRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Classe introuvable avec l'id : " + id));
     }
 
     @Transactional(readOnly = true)
@@ -36,6 +37,7 @@ public class ClasseService {
 
     @Transactional
     public void deleteClasse(Integer id) {
+        getClasseById(id);
         classeRepository.deleteById(id);
     }
 }
