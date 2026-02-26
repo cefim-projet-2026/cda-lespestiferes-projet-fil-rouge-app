@@ -86,6 +86,7 @@ public class AdviceController {
         body.put("status", status.value());
         body.put("erreur", status.getReasonPhrase());
         body.put("message", message);
+
         return ResponseEntity.status(status).body(body);
     }
 }
