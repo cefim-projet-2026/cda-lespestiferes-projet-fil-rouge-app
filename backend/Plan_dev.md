@@ -100,7 +100,7 @@ statut_presence_enum → 'Present', 'Absence_Injustifiee', 'Absence_Justifiee'
 | Entités JPA | ✅ Done | Créées dans `core/entities` |
 | Repositories | ✅ Done | Interfaces créées dans `core/repositories` |
 | Services métier | ✅ Done | Implémentés dans `core/services` |
-| Contrôleurs REST | ❌ À faire | |
+| Contrôleurs REST | ✅ Done | CRUD de base (US-05) + UtilisateurController refactoré avec DTOs/validation (US-06) |
 | JWT auth (login/register) | ❌ À faire | |
 
 ---
@@ -115,8 +115,8 @@ statut_presence_enum → 'Present', 'Absence_Injustifiee', 'Absence_Justifiee'
 | **US-02** | ~~Créer les entités JPA (8 tables + 5 enums)~~ | ~~8~~ | ✅ Done |
 | **US-03** | ~~Repositories Spring Data JPA~~ | ~~3~~ | ✅ Done |
 | **US-04** | ~~Services métier (Utilisateur, Note, Classe, Matiere)~~ | ~~8~~ | ✅ Done |
-| **US-05** | Contrôleurs REST API (CRUD) | 8 | ❌ |
-| **US-06** | RP : gestion utilisateurs (CRUD) via API | 5 | ❌ |
+| **US-05** | ~~Contrôleurs REST API (CRUD)~~ | ~~8~~ | ✅ Done |
+| **US-06** | ~~RP : gestion utilisateurs (CRUD) via API~~ | ~~5~~ | ✅ Done |
 | **US-07** | Formateur : saisir et consulter les notes | 8 | ❌ |
 | **US-08** | Élève : consulter ses notes par matière | 5 | ❌ |
 
