@@ -1,8 +1,10 @@
 package fr.cefim.lespestiferes.gestionpedagogique.core.services;
 
+import fr.cefim.lespestiferes.gestionpedagogique.core.entities.Matiere;
 import fr.cefim.lespestiferes.gestionpedagogique.core.entities.Note;
 import fr.cefim.lespestiferes.gestionpedagogique.core.enums.CatEvalEnum;
 import fr.cefim.lespestiferes.gestionpedagogique.core.enums.StatutPresenceEnum;
+import fr.cefim.lespestiferes.gestionpedagogique.core.repositories.MatiereRepository;
 import fr.cefim.lespestiferes.gestionpedagogique.core.repositories.NoteRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -49,6 +51,19 @@ public class NoteService {
     @Transactional(readOnly = true)
     public List<Note> getNotesByEleve(Integer idEleve) {
         return noteRepository.findByEleveIdUtilisateur(idEleve);
+    }
+
+    /**
+     * Méthode qui retourne la liste des matières pour lesquelles un élève a des notes,
+     * sans doublons
+     */
+    @Transactional(readOnly = true)
+    public List<Matiere> getMatieresByEleves(Integer idEleve) {
+        List<Note> notes = getNotesByEleve(idEleve);
+        return notes.stream()
+                .map(note -> note.getEvaluation().getMatiere())
+                .distinct()
+                .toList();
     }
 
     @Transactional(readOnly = true)
