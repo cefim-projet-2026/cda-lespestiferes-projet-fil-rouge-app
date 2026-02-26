@@ -3,6 +3,7 @@ package fr.cefim.lespestiferes.gestionpedagogique.core.services;
 import fr.cefim.lespestiferes.gestionpedagogique.core.entities.Utilisateur;
 import fr.cefim.lespestiferes.gestionpedagogique.core.enums.RoleEnum;
 import fr.cefim.lespestiferes.gestionpedagogique.core.repositories.UtilisateurRepository;
+import fr.cefim.lespestiferes.gestionpedagogique.dto.request.UtilisateurRequestDTO;
 import fr.cefim.lespestiferes.gestionpedagogique.exception.BusinessRuleException;
 import fr.cefim.lespestiferes.gestionpedagogique.exception.DuplicateResourceException;
 import jakarta.persistence.EntityNotFoundException;
@@ -47,6 +48,51 @@ public class UtilisateurService {
     @Transactional(readOnly = true)
     public List<Utilisateur> getAllUtilisateurs() {
         return utilisateurRepository.findAll();
+    }
+
+    /**
+     * US-06 : Filtre les utilisateurs par rôle.
+     */
+    @Transactional(readOnly = true)
+    public List<Utilisateur> getUtilisateursByRole(RoleEnum role) {
+        return utilisateurRepository.findByRole(role);
+    }
+
+    /**
+     * US-06 : Récupère uniquement les utilisateurs actifs.
+     */
+    @Transactional(readOnly = true)
+    public List<Utilisateur> getUtilisateursActifs() {
+        return utilisateurRepository.findByEstActif(true);
+    }
+
+    /**
+     * US-06 : Met à jour un utilisateur existant à partir d'un DTO.
+     * Vérifie l'unicité de l'email avant la mise à jour.
+     */
+    @Transactional
+    public Utilisateur updateUtilisateur(Integer id, UtilisateurRequestDTO dto) {
+        Utilisateur utilisateur = getUtilisateurById(id);
+
+        // Vérification unicité email (si changé)
+        if (!utilisateur.getEmail().equals(dto.getEmail())) {
+            Optional<Utilisateur> existant = utilisateurRepository.findByEmail(dto.getEmail());
+            if (existant.isPresent()) {
+                throw new DuplicateResourceException("Cet email est déjà utilisé par un autre compte.");
+            }
+        }
+
+        utilisateur.setNom(dto.getNom());
+        utilisateur.setPrenom(dto.getPrenom());
+        utilisateur.setEmail(dto.getEmail());
+        utilisateur.setMotDePasse(dto.getMotDePasse());
+        utilisateur.setRole(dto.getRole());
+        utilisateur.setStatutEleve(dto.getStatutEleve());
+        if (dto.getEstActif() != null) {
+            utilisateur.setEstActif(dto.getEstActif());
+        }
+
+        return utilisateurRepository.save(utilisateur);
     }
 
     @Transactional
