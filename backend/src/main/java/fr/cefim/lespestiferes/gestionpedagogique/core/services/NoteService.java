@@ -155,6 +155,9 @@ public class NoteService {
     @Transactional(readOnly = true)
     public List<Note> getNotesByFormateur(Integer idFormateur) {
         return noteRepository.findByFormateurNative(idFormateur);
+    }
+
+    /**
      * Méthode qui retourne la liste des matières pour lesquelles un élève a des notes,
      * sans doublons
      */
