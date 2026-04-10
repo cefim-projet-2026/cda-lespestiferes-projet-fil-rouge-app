@@ -33,7 +33,7 @@ graph TD
 
 ### 1. Le Cœur du Système : Backend (API REST)
 Le cœur logique de notre application est une API RESTful développée en **Java 25** avec le framework **Spring Boot 3**.
-Nous avons opté pour une **architecture monolithique multicouche (N-Tier)**, idéale pour garantir la maintenabilité, la lisibilité et l'évolutivité du code :
+Nous avons opté pour une **architecture multicouche (N-Tier)**, idéale pour garantir la maintenabilité, la lisibilité et l'évolutivité du code :
 
 *   **🌐 Couche de Présentation (`Controllers`) :** Expose nos endpoints REST. Elle réceptionne les requêtes HTTP, valide la structure des données entrantes et renvoie les réponses formatées en JSON.
 *   **⚙️ Couche Métier (`Services`) :** Contient toute l'intelligence et les règles de gestion de l'école (ex: calculs des moyennes, règles d'assignation, interdiction de supprimer un formateur). Elle gère également la **transactionnalité** (`@Transactional`).
