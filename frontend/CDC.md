@@ -1,43 +1,54 @@
-Cahier des Charges
+# Cahier des Charges - Campus Connect
 
-Etat actuel
-	Aujourd’hui, le CEFIM remplit des notes dans des fichiers Excel. C’est chronophage, inefficace et a un potentiel d’erreur élevé.
-Objectifs du Projet
-Pour pallier ce problème, le projet vise à concevoir et implémenter un système de gestion de données pour une application de saisie de notes. Le système doit permettre : 
-Aux étudiants de consulter leur notes
-Aux formateurs de saisir des notes pour ses étudiants et de les consulter
-Aux Responsables pédagogiques de gérer les filières, classes, cours et formateurs
+## 1. Contexte et Objectifs
 
-En plus de régler les problèmes cités plus haut, cette application permettra un accès simplifié, notamment aux étudiants.
+**Public cible** : Enseignants, administration et étudiants d'une école d'informatique (150 étudiants actuellement, évolutif).
 
-Périmètre du projet
-	C’est un projet d’étude à destination du personnel du CEFIM. Il se focalise uniquement sur la saisie de notes. Il ne gère pas de calendrier ou de système de messagerie. Nous sommes 4 développeurs sur ce projet. Le projet doit être rendu pour la fin de l’année scolaire.
-Spécifications fonctionnelles
-	L’application doit permettre : 
-La consultation des notes par les étudiants
-La saisie de notes par les formateurs
-La gestion des utilisateurs par les responsables pédagogiques
+**Objectifs** :
+1.  **Concevoir et développer** une application interactive à partir du fichier Excel existant intitulé « CDA_nn_xx Tableau de bord », actuellement utilisé pour le suivi des données et indicateurs de performance.
+2.  **Créer un outil de saisie des notes** pour deux filières (Infra & Cyber, Web & Développement), en initial et en alternance, avec intégration des spécificités pédagogiques et des données existantes.
 
-Spécifications techniques
+## 2. Fonctionnalités Principales
 
-Tout d’abord, la phase de conception utilisera des outils comme : Figma, Drawio, Looping et Word.
-Pour la création de diagrammes, maquettes et documentations.
+### 2.1. Gestion des Utilisateurs et des Filières
+*   **Profils** : Enseignants, administration, étudiants (droits différenciés).
+*   **Filières** : Distinction automatique entre les deux filières (Infra & Cyber, Web & Développement) et entre les années (1ère année en initial, alternance à partir de la 2ème année).
+*   **Authentification** : Connexion sécurisée, éventuellement intégrée à l'annuaire existant.
 
-Pour la base données, se sera Postgres via Suppabase.
+### 2.2. Saisie des Notes
+*   **Types d'évaluations** : Cas pratique, dossier, devoir sur table, QCM, projet, etc.
+*   **Pondération** : 50% contrôle continu (1 à 3 évaluations par matière), 50% examen final.
+*   **ECTS** : Attribution et affichage des crédits ECTS par matière.
+*   **Saisie manuelle** : Possibilité d'ajouter/supprimer des matières et des types d'évaluations.
+*   **Import/Export** : Compatible avec les formats CSV/Excel pour les notes et les données étudiants.
 
-Le back-end sera en Java Spring.
+### 2.3. Intégration des Données Existantes
+*   **Récupération automatique** : Nom, prénom, photo des alternants depuis le tableau de bord actuel.
+*   **Synchronisation** : Mise à jour régulière des données étudiants (ajout/suppression).
 
-Le front-end en React.
-Et enfin, une phase de DevOps CI/CD via AWS
+### 2.4. Tableau de Bord
+*   **Enseignants** : Vue par filière, année, matière, avec calcul automatique des moyennes (pondération contrôle continu/examen final).
+*   **Étudiants** : Accès à leurs notes, détails des évaluations, et total d'ECTS obtenus.
+*   **Administration** : Vue globale, statistiques par filière/année, export des relevés de notes.
 
-L’application est attendue pour fonctionner dans le web.
+### 2.5. Calculs et Reporting
+*   **Moyennes** : Calcul automatique selon la pondération (50/50), avec affichage des ECTS validés.
+*   **Alertes** : Notification pour notes manquantes, moyennes critiques, ou ECTS non validés.
+*   **Relevés** : Génération de relevés de notes par semestre/année, avec détails des évaluations.
 
-Ressources
+### 2.6. Évolutivité et Personnalisation
+*   **Scalabilité** : Architecture adaptée à l'augmentation du nombre d'étudiants et de filières.
+*   **Paramétrage** : Ajout de nouveaux types d'évaluations ou de règles de calcul.
 
-Sont à notre disposition, des documents fournis par le personnel du CEFIM :
-Un fichier Excel d’exemple de leur manière de saisir des notes actuellement
-Des comptes-rendus écrits de sessions de questions réponses.
-Nos supports de cours, ainsi que l’appui de nos formateurs.
+## 3. Contraintes Techniques
 
-Délais
-	L’application est attendue pour la fin de notre cycle. Pour chaque phase de cours, il est attendu que l’application soit avancée en parallèle des notions vues en cours.
+### 3.1. Sécurité et Conformité
+*   **RGPD** : Protection des données personnelles (photos, notes).
+*   **Sauvegardes** : Automatiques et sécurisées.
+
+### 3.2. Compatibilité
+*   **Responsive** : Utilisable sur ordinateur, tablette et smartphone.
+*   **Intégration** : API pour récupérer les données du tableau de bord existant.
+
+### 3.3. Hébergement
+Interne ou Cloud, à définir avec Thomas.
